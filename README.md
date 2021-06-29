@@ -9,11 +9,11 @@ Prerequisites
 
 Checkout the project, and in the python_poc_1 folder (or your checked out folder)\
 
-$<dir> python webapp.py (this runs the REST App)
+$ python webapp.py (this runs the REST App)
 
-# Code Info:- \
-  1. webapp.py - REST Controller \
-  2. UserWishListDao.py - Data Access Class that does the I/O with SQLLite DB \
+# Code Info:- 
+  1. webapp.py - REST Controller 
+  2. UserWishListDao.py - Data Access Class that does the I/O with SQLLite DB 
   3. zonar.db - SQLLite DB with test-data
 
 If you use the uploaded zonar db it has pre-loaded data , else you can refer to the following to upload data)
@@ -22,7 +22,9 @@ Connect to sqlliite ->Sqlite3 zonar.db
 
 # DDL <br />
 create table user (id integer, firstname text, lastname text, email text, password text, primary key(id)); <br />
+
 Create table book(title text, author text, isbn text, date_of_publication date, primary key(isbn)); <br />
+
 Create table user_wish_list(userid integer, bookid text, foreign key(userid) references user(id), foreign key(bookid) references book(isbn)); <br />
 
 # Data insertion scripts:- <br />
@@ -72,7 +74,7 @@ http://127.0.0.1:5000/allusers <br />
         "userid : 5",\
         "name : Kevin Prince",\
         "email : kevin.prince@yahoo.com"\
-    ]\
+    ]
 
 # List all Wishlists in the system<br />
 http://127.0.0.1:5000/allwishlists <br />
@@ -101,32 +103,32 @@ http://127.0.0.1:5000/addwishlist?userid=2&isbn=1234-5678-9012-3499 \
 [\
     "rowcount : 0",\
     "errorcode : BOOK_DETAILS_NOT_FOUND",\
-    "message : Book 1234-5678-9012-3499 Not Found. Please Try Again"\
-]
+    "message : Book 1234-5678-9012-3499 Not Found. Please Try Again" \
+]\
 Add Wish List with non-existing User Id\
-http://127.0.0.1:5000/addwishlist?userid=44&isbn=1234-5678-9012-3499\
+http://127.0.0.1:5000/addwishlist?userid=44&isbn=1234-5678-9012-3499 \
 [\
     "rowcount : 0",\
     "errorcode : USER_NOT_FOUND",\
     "message : User 44 Not Found. Please Try Again"\
 ]
 # Update Wish List <br/>
-Update Wish List with non-existing user id\
-http://127.0.0.1:5000/updatewishlist?userid=99&oldisbn=1234-5678-9012-3456&newisbn=1794-4688-1011-2187\
+Update Wish List with non-existing user id \
+http://127.0.0.1:5000/updatewishlist?userid=99&oldisbn=1234-5678-9012-3456&newisbn=1794-4688-1011-2187 \
 [\
     "rowcount : 0",\
     "errorcode : USER_NOT_FOUND",\
     "message : User 99 Not Found. Please Try Again"\
 ]\
-Update Wish List with non-existing book/title\
-http://127.0.0.1:5000/updatewishlist?userid=2&oldisbn=1234-5678-9012-3456&newisbn=1794-4688-1011-ppppp\
+Update Wish List with non-existing book/title \
+http://127.0.0.1:5000/updatewishlist?userid=2&oldisbn=1234-5678-9012-3456&newisbn=1794-4688-1011-ppppp \
 [\
     "rowcount : 0",\
     "errorcode : BOOK_DETAILS_NOT_FOUND",\
     "message : New Book 1794-4688-1011-ppppp Not Found. Please Try Again"\
 ]\
-Update Wish List - Success\
-http://127.0.0.1:5000/updatewishlist?userid=2&oldisbn=1114-3678-7012-3157&newisbn=1794-4688-1011-2187\
+Update Wish List - Success \
+http://127.0.0.1:5000/updatewishlist?userid=2&oldisbn=1114-3678-7012-3157&newisbn=1794-4688-1011-2187 \
 [\
     "rowcount : 1",\
     "errorcode : SUCCESS”,\
@@ -134,21 +136,21 @@ http://127.0.0.1:5000/updatewishlist?userid=2&oldisbn=1114-3678-7012-3157&newisb
 ]
 # Delete Wish Lists<br />
 Delete wish list non-existing book\
-http://127.0.0.1:5000/deletewishlist?userid=2&isbn=1234-5678-9012-345\
+http://127.0.0.1:5000/deletewishlist?userid=2&isbn=1234-5678-9012-345 \
 [\
     "rowcount : 0",\
     "errorcode : BOOK_DETAILS_NOT_FOUND",\
     "message : Book 1234-5678-9012-345 Not Found. Please Try Again"\
 ]\
 Delete wish list non-existing user id\
-http://127.0.0.1:5000/deletewishlist?userid=99&isbn=1234-5678-9012-345\
+http://127.0.0.1:5000/deletewishlist?userid=99&isbn=1234-5678-9012-345 \
 [\
     "rowcount : 0",\
     "errorcode : USER_NOT_FOUND",\
     "message : User 99 Not Found. Please Try Again"\
 ]\
 Delete Wish List - Success\
-http://127.0.0.1:5000/deletewishlist?userid=2&isbn=1794-4688-1011-2187\
+http://127.0.0.1:5000/deletewishlist?userid=2&isbn=1794-4688-1011-2187 \
 [\
     "rowcount : 1",\
     "errorcode : SUCCESS”,\
