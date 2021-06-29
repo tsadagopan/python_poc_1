@@ -7,8 +7,14 @@ Prerequisites
 3. Postman (for REST testing)
 4. python
 
-Checkout the project, and in the python_poc_1 folder (or your checked out folder)
-python webapp.py (this runs the REST App)
+Checkout the project, and in the python_poc_1 folder (or your checked out folder)\
+
+$<dir> python webapp.py (this runs the REST App)
+
+# Code Info:- \
+  1. webapp.py - REST Controller \
+  2. UserWishListDao.py - Data Access Class that does the I/O with SQLLite DB \
+  3. zonar.db - SQLLite DB with test-data
 
 If you use the uploaded zonar db it has pre-loaded data , else you can refer to the following to upload data)
 
